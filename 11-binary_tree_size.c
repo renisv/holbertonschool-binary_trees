@@ -1,0 +1,20 @@
+#include "binary_trees.h"
+#include <stddef.h>
+#include <stdlib.h>
+
+size_t binary_tree_size(const binary_tree_t *tree)
+{
+    size_t right_nodes = 0;
+    size_t left_nodes = 0;
+
+    if (tree == NULL)
+        return (0);
+    
+    if (tree->left != NULL)
+        left_nodes = binary_tree_size(tree->left);
+
+    if (tree->right != NULL)
+        right_nodes = binary_tree_size(tree->right);
+
+    return(right_nodes + left_nodes + 1);
+}
